@@ -1,7 +1,7 @@
 ---
 name: WikiABT User Stories
-about: 'USER STORY: <TITLE>'
-title: ''
+about: User stories for the Wiki ABT Project
+title: 'USER STORY: <TITLE>'
 labels: ''
 assignees: ''
 
