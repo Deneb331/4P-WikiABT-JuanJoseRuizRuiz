@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-{% endblock content %}
+<div class="col-12">
+    {% for category in category_list %}
+    <div class="col-4">
+        <a href="{% url 'wiki:post_page' category_slug=category.slug %}">{{ category.title }}</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

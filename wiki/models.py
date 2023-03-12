@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -20,7 +21,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, null=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -30,6 +31,12 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["title"]
+
+#    def get_absolute_url(self):
+#        return f'/{self.category.slug}/{self.slug}/'
+
+    def get_absolute_url(self):
+        return reverse("wiki:post_detail", kwargs={"category_slug": self.category.slug, "post_slug": self.slug})
 
     def __str__(self):
         return self.title
