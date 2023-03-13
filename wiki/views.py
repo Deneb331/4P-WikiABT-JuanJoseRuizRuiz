@@ -50,6 +50,14 @@ class PostDetail(generic.DetailView):
     model = Post
     template_name = "post_detail.html"
 
+    def get_object(self, queryset=None):
+        """
+        Override get_object function inside DetailView to get category-slug/post-slug url
+        """
+        category_slug = self.kwargs.get('category_slug')
+        post_slug = self.kwargs.get('post_slug')
+        return get_object_or_404(Post, slug=post_slug, category__slug=category_slug)
+
 
 def contact(request):
     """
