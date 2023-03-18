@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse
+from .forms import ContactForm
 
 from .models import Category, Post
 
@@ -52,7 +53,7 @@ class PostDetail(generic.DetailView):
 
     def get_object(self, queryset=None):
         """
-        Override get_object function inside DetailView to get category-slug/post-slug url
+        Override get_object function inside DetailView to get 'category-slug/post-slug url'
         """
         category_slug = self.kwargs.get('category_slug')
         post_slug = self.kwargs.get('post_slug')
@@ -60,7 +61,11 @@ class PostDetail(generic.DetailView):
 
 
 def contact(request):
-    """
-    In this page we have a contact form available for the user.
-    """
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})

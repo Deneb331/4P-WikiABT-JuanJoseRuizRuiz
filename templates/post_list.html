@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<h2>{{ category.title }}</h2>
 <div class="col-12">
-    <p>{{category.title}}</p>
-    {% for post in post_list %}
-    <div class="col-4">
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-    </div>
-    {% endfor %}
+    <ul class="post-list">
+        {% for post in post_list|dictsort:"title" %}
+          <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

@@ -6,16 +6,18 @@
 body {
     width: 100%;
     height: auto;
-    background-color: #3F0140;
+    background-color: rgb(235, 235, 235);
+}
+
+h1,
+h2,
+h3 {
+    color: black;
+    text-align: center;
 }
 
 p {
-    color: white;
-}
-
-nav {
-    width: 100%;
-    background-color: #372A8C;
+    color: black;
 }
 
 a {
@@ -23,24 +25,129 @@ a {
     text-decoration: none;
 }
 
-.collapse {
-    height: 100%;
+/* Navigation Bar */
+
+nav {
+    width: 100%;
+    background-color: #372A8C;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-size: 150%;
     margin-left: 10px;
 }
 
-.nav-link, .nav-link:active {
+.nav-link,
+.nav-link:active {
     color: white;
 }
 
-.nav-link:hover, a:hover {
+.nav-link:hover,
+a:hover {
     color: rgb(169, 169, 169);
 }
 
 .active {
     color: white;
-    background-color: #270028;
+}
+
+/* Categories */
+
+.category-section {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* Post list */
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.post-list li {
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.post-list li:hover {
+    transform: scale(1.1) translateX(5%);
+    z-index: 1;
+}
+
+.post-list li:first-child {
+    border-top: none;
+}
+
+.post-list li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.post-list li a:hover {
+    color: #697bff;
+}
+
+/* Contact page */
+
+.form-container {
+    width: 50%;
+    background-color: #228b22;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid rgb(170, 170, 170);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.488);
+}
+
+.form-container h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: inline-block;
+    text-align: left;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.form input[type="submit"] {
+    background-color: #00e117;
+    color: #fff;
+    text-shadow: 1px 1px #808000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #00cc44;
+}
+
+/* Footer */
+
+footer {
+    background-color: #372A8C;
 }
