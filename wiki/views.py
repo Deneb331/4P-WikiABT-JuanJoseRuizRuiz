@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse
 from .forms import ContactForm
+from django.core.mail import send_mail
 
 from .models import Category, Post
 
@@ -61,9 +62,16 @@ class PostDetail(generic.DetailView):
 
 
 def contact(request):
+    """
+    Contact form view with validation. When the form is completed, it redirects the user to the main page.
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            email = form.cleaned_data['email']
+            send_mail(subject, message, email, ['juanjo1.seriousmail@gmail.com'])
             return HttpResponseRedirect('/')
     else:
         form = ContactForm()
