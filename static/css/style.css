@@ -25,6 +25,11 @@ a {
     text-decoration: none;
 }
 
+.container {
+    text-align: center;
+    margin: 30px auto;
+}
+
 /* Navigation Bar */
 
 nav {
@@ -96,7 +101,7 @@ a:hover {
     color: #697bff;
 }
 
-/* Contact page */
+/* Form styling */
 
 .form-container {
     width: 50%;
@@ -123,6 +128,7 @@ a:hover {
 
 .form input[type="text"],
 .form input[type="email"],
+.form input[type="password"],
 .form textarea {
     width: 100%;
     padding: 10px;
@@ -132,7 +138,7 @@ a:hover {
     font-size: 16px;
 }
 
-.form input[type="submit"] {
+input[type="submit"] {
     background-color: #00e117;
     color: #fff;
     text-shadow: 1px 1px #808000;
@@ -142,7 +148,7 @@ a:hover {
     font-size: 16px;
 }
 
-.form input[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #00cc44;
 }
 
