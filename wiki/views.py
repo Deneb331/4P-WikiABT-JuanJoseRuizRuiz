@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse
-from .forms import ContactForm
+from .forms import ContactForm, CommentForm
 from django.core.mail import send_mail
 
 from .models import Category, Post
@@ -50,15 +50,65 @@ class PostDetail(generic.DetailView):
     Detail view of a single post.
     """
     model = Post
-    template_name = "post_detail.html"
 
-    def get_object(self, queryset=None):
+    def get(self, request, queryset=None, *args, **kwargs):
         """
         Override get_object function inside DetailView to get 'category-slug/post-slug url'
         """
         category_slug = self.kwargs.get('category_slug')
         post_slug = self.kwargs.get('post_slug')
-        return get_object_or_404(Post, slug=post_slug, category__slug=category_slug)
+        post = get_object_or_404(Post, slug=post_slug, category__slug=category_slug)
+        comments = post.comments.filter(approved=True).order_by('created_on')
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
+        return render(
+            request,
+            "post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": False,
+                "liked": liked,
+                "comment_form": CommentForm()
+            },
+        )
+
+    def post(self, request, queryset=None, *args, **kwargs):
+        """
+        Override get_object function inside DetailView to get 'category-slug/post-slug url'
+        """
+        category_slug = self.kwargs.get('category_slug')
+        post_slug = self.kwargs.get('post_slug')
+        post = get_object_or_404(Post, slug=post_slug, category__slug=category_slug)
+        comments = post.comments.filter(approved=True).order_by('created_on')
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+        else:
+            comment_form = CommentForm()
+        
+        return render(
+            request,
+            "post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": True,
+                "liked": liked,
+                "comment_form": CommentForm()
+            },
+        )
 
 
 def contact(request):
