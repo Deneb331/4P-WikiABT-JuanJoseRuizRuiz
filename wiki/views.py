@@ -1,9 +1,9 @@
+from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic, View
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from django.views import generic
-from django.urls import reverse
-from .forms import ContactForm, CommentForm
+
 from django.core.mail import send_mail
+from .forms import ContactForm, CommentForm
 
 from .models import Category, Post
 
@@ -110,6 +110,18 @@ class PostDetail(generic.DetailView):
             },
         )
 
+
+class PostLike(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('wiki:post_detail', args=[post.category.slug, slug]))
+        
 
 def contact(request):
     """
