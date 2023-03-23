@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 
 from django.core.mail import send_mail
-from .forms import ContactForm, CommentForm
+from .forms import ContactForm, CommentForm, PostForm
 
 from .models import Category, Post
 
@@ -17,6 +17,19 @@ def index(request):
         'category_list': category_list
     }
     return render(request, 'index.html', context)
+
+
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            form.save_m2m()
+            return HttpResponseRedirect('/')
+    else:
+        form = PostForm()
+    return render(request, 'create_post.html', {'form': form})
 
 
 class CategoryList(generic.ListView):
@@ -111,7 +124,7 @@ class PostDetail(generic.DetailView):
         )
 
 
-class PostLike(View):
+class PostDetailLike(View):
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
@@ -123,6 +136,18 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('wiki:post_detail', args=[post.category.slug, slug]))
         
 
+class PostListLike(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('wiki:post_list'))
+
+
 def contact(request):
     """
     Contact form view with validation. When the form is completed, it redirects the user to the main page.
@@ -133,7 +158,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
-            send_mail(subject, message, email, ['juanjo1.seriousmail@gmail.com'])
+            send_mail(subject, message, ['djangorr.1998@gmail.com'], [email])
             return HttpResponseRedirect('/')
     else:
         form = ContactForm()

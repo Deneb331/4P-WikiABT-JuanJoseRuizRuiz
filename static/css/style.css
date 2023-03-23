@@ -3,9 +3,14 @@
     padding: 0;
 }
 
+/* Adjust height only for html and body to fix footer positioning */
+html,
+body {
+    height: 100%;
+}
+
 body {
     width: 100%;
-    height: auto;
     background-color: rgb(235, 235, 235);
 }
 
@@ -26,8 +31,25 @@ a {
 }
 
 .container {
+    width: 95%;
     text-align: center;
     margin: 30px auto;
+}
+
+
+/* Footer positioning fix */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    flex-shrink: 0;
 }
 
 /* Navigation Bar */
@@ -54,6 +76,12 @@ a:hover {
 
 .active {
     color: white;
+}
+
+.btn-post {
+    background-color: #00cc44;
+    border-radius: 20px;
+    text-align: right;
 }
 
 /* Categories */
@@ -99,6 +127,56 @@ a:hover {
 
 .post-list li a:hover {
     color: #697bff;
+}
+
+/* Post detail */
+
+.post-title {
+    text-align: left;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.post-content .info-box {
+    flex-basis: 25%;
+    margin-left: 20px;
+}
+
+.post-content .post-text {
+    flex-basis: 75%;
+}
+
+.post-content .post-text p:first-child {
+    margin-top: 0;
+}
+
+.info-box .card-body {
+    height: auto;
+}
+
+.post-subtitle {
+    font-size: 10px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+/* Comment styling inside the post */
+
+.comment-form {
+    height: 100px;
+}
+
+.comment-btn {
+    margin-top: 20px;
+}
+
+.comments {
+    border-top: 1px solid;
+    text-align: left;
 }
 
 /* Form styling */
@@ -155,5 +233,7 @@ input[type="submit"]:hover {
 /* Footer */
 
 footer {
+    width: 100%;
+    height: auto;
     background-color: #372A8C;
 }
