@@ -158,7 +158,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
-            send_mail(subject, message, ['djangorr.1998@gmail.com'], [email])
+            send_mail(subject, message, 'djangorr.1998@gmail.com', [email])
             return HttpResponseRedirect('/')
     else:
         form = ContactForm()
