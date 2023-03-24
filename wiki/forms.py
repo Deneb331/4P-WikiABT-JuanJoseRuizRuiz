@@ -1,5 +1,6 @@
 from django import forms
 from .models import Comment, Post
+from django_summernote.admin import SummernoteModelAdmin
 
 
 class ContactForm(forms.Form):
@@ -18,4 +19,5 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'slug', 'category', 'featured_image', 'image_alt', 'content', 'infobox_content', 'status')
+        summernote_fields = ('content',)
+        fields = ('title', 'slug', 'category', 'featured_image', 'image_alt', 'infobox_content', 'status')
