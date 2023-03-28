@@ -19,7 +19,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ('title', 'category', 'featured_image', 'image_alt', 'content', 'infobox_content', 'status')
         widgets = {
             'content': SummernoteWidget(),
             'infobox_content': SummernoteWidget(),

@@ -1,7 +1,5 @@
 from django.urls import path
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
 
 app_name = 'wiki'
 urlpatterns = [
@@ -13,4 +11,4 @@ urlpatterns = [
     path('<slug:category_slug>/<slug:post_slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>', views.PostDetailLike.as_view(), name='post_detail_like'),
     path('like/<slug:slug>', views.PostListLike.as_view(), name='post_list_like'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

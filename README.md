@@ -111,8 +111,8 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Bug Log
 
-- When tests are executed, the console is not able to create a testing database to check the tests - 
-- In the deployed project, style.css is not loading - 
+- When tests are executed, the console is not able to create a testing database to check the tests - Changed Debug in settings to "'DEVELOPMENT' in os.environ" and add an if statement in settings to use one database or other depending if we are in depelopment or not
+- In the deployed project, style.css is not loading - Used the command "pyhton3 manage.py collectstatic"
 - When try to access a post, the page can't load because it can't find the correct slug - Use get_absolute_url() method in the post model.
 - Even when the view and url seems to be right, contact page can't load - Change the order of the contact url in urls.py
 - In the contact form, it gives an error when the user try to use it to send a message - needed to create an application password in the gmail and update settings.py
