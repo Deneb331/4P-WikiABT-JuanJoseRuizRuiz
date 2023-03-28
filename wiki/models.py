@@ -34,9 +34,6 @@ class Post(models.Model):
     class Meta:
         ordering = ["title"]
 
-#    def get_absolute_url(self):
-#        return f'/{self.category.slug}/{self.slug}/'
-
     def get_absolute_url(self):
         return reverse("wiki:post_detail", kwargs={"category_slug": self.category.slug, "post_slug": self.slug})
 
