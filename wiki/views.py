@@ -32,6 +32,18 @@ def create_post(request):
     return render(request, 'create_post.html', {'form': form})
 
 
+def edit_post(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(f'/{post.category.slug}/{post.slug}/')
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'edit_post.html', {'form': form})
+
+
 class CategoryList(generic.ListView):
     """
     In this page we show a list with all the categories contained in the wiki.
@@ -134,18 +146,6 @@ class PostDetailLike(View):
             post.likes.add(request.user)
         
         return HttpResponseRedirect(reverse('wiki:post_detail', args=[post.category.slug, slug]))
-        
-
-class PostListLike(View):
-    def post(self, request, slug):
-        post = get_object_or_404(Post, slug=slug)
-
-        if post.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
-        else:
-            post.likes.add(request.user)
-        
-        return HttpResponseRedirect(reverse('wiki:post_list'))
 
 
 def contact(request):
