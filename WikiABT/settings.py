@@ -178,3 +178,13 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')  # past the key or password a
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'djangorr.1998@gmail.com'
+
+
+SUMMERNOTE_CONFIG = {
+    # You can put custom Summernote settings
+    'summernote': {
+        # Change editor size
+        'width': '100%',
+        'height': '500'
+    },
+}
