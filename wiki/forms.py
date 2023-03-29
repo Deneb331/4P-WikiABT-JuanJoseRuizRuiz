@@ -24,4 +24,3 @@ class PostForm(forms.ModelForm):
             'content': SummernoteWidget(),
             'infobox_content': SummernoteWidget(),
         }
-        
