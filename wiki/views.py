@@ -93,7 +93,7 @@ class PostDetail(generic.DetailView):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         return render(
             request,
             "post_detail.html",
@@ -108,7 +108,8 @@ class PostDetail(generic.DetailView):
 
     def post(self, request, queryset=None, *args, **kwargs):
         """
-        Override get_object function inside DetailView to get 'category-slug/post-slug url'
+        Override get_object function inside DetailView
+        to get 'category-slug/post-slug url'
         """
         category_slug = self.kwargs.get('category_slug')
         post_slug = self.kwargs.get('post_slug')
@@ -128,7 +129,7 @@ class PostDetail(generic.DetailView):
             comment.save()
         else:
             comment_form = CommentForm()
-        
+
         return render(
             request,
             "post_detail.html",
@@ -153,13 +154,14 @@ class PostDetailLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('wiki:post_detail', args=[post.category.slug, slug]))
 
 
 def contact(request):
     """
-    Contact form view with validation. When the form is completed, it redirects the user to the main page.
+    Contact form view with validation. When the form is completed, it
+    redirects the user to the main page.
     """
     if request.method == 'POST':
         form = ContactForm(request.POST)

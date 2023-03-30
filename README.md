@@ -4,9 +4,7 @@
 
 This page is a wiki where a fictional game studio organise information of their games, and is available to the general public so players can learn more about the worlds created by this studio.
 
-<h2 align="center"><img src="assets/images/SimonSaysReadmeLogo.png"></h2>
-
-<h2 align="center"><img src="assets/images/SimonHeader.png"></h2>
+<h2 align="center"><img src="static/img/MainSite.png"></h2>
 
 ## User Experience (UX)
 
@@ -14,13 +12,38 @@ This page is a wiki where a fictional game studio organise information of their 
 
     All the user stories where created in Github issues, organised in different columns depending if they were to do, in progress or completed.
 
+    <h2 align="center"><img src="static/img/GitHubIssues.png"></h2>
+
+    - View Category List: As a Site User I can view a list of the categories so that I can find easier a post about the topic I am looking for
+
+    - Post Categories: As a Admin I can assign categories to a post so that I can keep the content organized
+
+    - Create/Edit Post: As a Site User I can create a new post or edit an existing one so that I can update the wiki with new info
+
+    - Manage Posts: As a Site Admin I can validate posts or comments made by other site users so that I can manage the wiki content
+
+    - View Paginated Posts: As a Site User I can view a list of posts so that I can find and view the post I want easily
+
+    - Open Posts: As a Site User I can open a post so that I can view the content in that post
+
+    - Create Drafts: As a Site User I can create draft posts so that I can finish the post later
+
+    - Comment on a Post: As a Site User I can comment on a post so that I can have a conversation with other users
+
+    - View Comments: As a Site User I can view the comments in a post so that I can read the conversation
+
+    - Like / Unlike: As a Site User I can like or unlike posts or comments so that I can interact with the content
+
+    - View Likes: As a Site User I can view likes on posts or comments so that I can see which posts or comments have more popularity
+
+    - Authentication: As a Site User I can log in into my own account so that I can comment, write new posts or edit existing posts.
+
+    - Contact Page: As a Site User I can fill a contact form so that I can send feedback to the site admin
+
 -   ### Design
     -   #### Color Scheme
-        -   The colors chosen are a chromatic triad of cian, red and yellow:
-        <h2 align="center"><img src="assets/images/ColorPallette.png"></h2>
-
-    -   #### Typography
-        -   The Kanit font is the only one used in this project, as it gives a similar feeling as the original Simon game font, but feels more modern and fresh.
+        -   The colors chosen are a combination of dark and light blue and green, chosen for being cold and chill colors:
+        <h2 align="center"><img src="static/img/ColorPalette.png"></h2>
 
 ## Features
 
@@ -55,6 +78,8 @@ This page is a wiki where a fictional game studio organise information of their 
     - GitHub is used to store the projects code after being pushed from Git.
 1. [Django:](https://www.djangoproject.com/)
     - Django is the framework used to build the whole site.
+1. [Bootstrap5:](https://getbootstrap.com/)
+    - Bootstrap has been used for the structure and style of the project.
 1. [Heroku:](https://www.heroku.com/)
     - Heroku is the platform used to host the site.
 1. [Cloudinary:](https://cloudinary.com/)
@@ -73,39 +98,67 @@ This page is a wiki where a fictional game studio organise information of their 
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-        <h2 align="center"><img src="assets/images/HTMLValidation.png"></h2>
+-   [W3C HTML Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+    - The base page has errors due to the custom links used in Django, but other than that, there's no errors.
+    - index.html has no errors.
+    - category_list.html has no errors.
+    - post_list.html has no errors.
+    - post_detail.html has no errors.
+    - edit_post.html has no errors.
+    - create_post.html has no errors.
+    - contact.html has no errors.
+    - login.html has no errors.
+    - logout.html has no errors.
+    - signup.html has no errors.
+
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-        <h2 align="center"><img src="assets/images/CSSValidation.png"></h2>
+        <h2 align="center"><img src="static/img/CSSValidation.png"></h2>
 -   [JSHint](https://jshint.com/)
-        <h2 align="center"><img src="assets/images/JSHint.png"></h2>
+        <h2 align="center"><img src="static/img/JSValidation.png"></h2>
+-   [PythonChecker](https://www.pythonchecker.com/)
+    - admin.py has no errors.
+    - forms.py has no errors.
+    - models.py has no errors.
+    - urls.py has no errors.
+    - views.py has no errors.
+    - settings.py has no errors.
+    - test_forms.py has no errors.
+    - test_models.py has no errors.
+    - test_views.py has no errors.
 
 ### Testing User Stories from User Experience (UX) Section
 
--   #### First Time Visitor Goals
+- View Category List: The user can access the Category List by clicking in the option Explore in the navbar.
 
-    1. As a First Time Visitor, I want the user to be able to understand the game and play as fast as possible.
+- Post Categories: The admin can create or delete categories from de Admin Panel.
 
-        1. Upon entering the site, users find the name of the game, with a short description of how to play, a visible start button, and 
-        2. The game takes most of the website space, so the user will not lose it.
+- Create/Edit Post: If the user is authenticated, he/she can create a new post by clicking in the green "Create Post" button in the navbar, or edit a post from the post list of its category.
 
--   #### Returning Visitor Goals
+- Manage Posts: The admin can manage the posts from the admin panel.
 
-    1. As a Returning Visitor, I want to be able to restart the game quickly enough to not lose interest.
+- View Paginated Posts: When the user clicks on a category, he will see a list of all the posts with that category assigned.
 
-        1. The website checks automatically if the user chose the correct sequence or not.
-        2. When the game finishes, the users just have to press the start button to try again.
+- Open Posts: The user can open any post he finds in the post list inside each category.
 
--   #### Frequent User Goals
+- Create Drafts: When a post is created, the user or admin have an option to decide if the post is on draft or fully published.
 
-    1. As a Frequent User, I want to be able to have some way of saving history of my score.
+- Comment on a Post: The user can comment on any post with the comment box he/she can find at the bottom of the individual post.
 
-        1. At the end of the website, the user can find a small form he can complete to get the score in his/her email.
+- View Comments: The user can visualize all the comments in a post at the bottom of the post page.
+
+- Like / Unlike: The user can like or dislike a post by clicking on the heart next to the post title.
+
+- View Likes: The user can see if he liked or not the post depending on the icon he/she sees next to the post title.
+
+- Authentication: The user have the log in and register pages in the navbar when he/she is not authenticated, and he will see the option to log out when he is authenticated.
+
+- Contact Page: The user can access the contact form by clicking in the contact option in the navbar.
 
 ### Further Testing
 
 -   The Website was tested on Google Chrome, Microsoft Edge and Opera browsers.
--   The website was viewed on a variety of devices such as Desktop, Laptop and Xiaomi Redmi Note 10.
+-   The website was viewed on a variety of devices such as Laptop and Xiaomi Redmi Note 10.
+-   Tests have been written to test forms, views and models.
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends were asked to review the site and documentation to point out any bugs and/or user experience issues.
 
@@ -117,19 +170,39 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 - Even when the view and url seems to be right, contact page can't load - Change the order of the contact url in urls.py
 - In the contact form, it gives an error when the user try to use it to send a message - needed to create an application password in the gmail and update settings.py
 - In deployment, summernote widget doesn't show up as it does in local environment - Couldn't find a solution
+- Background images in index page don't load in Debug=False, even when they are uploaded in Cloudinary and did collectstatic command - Couldn't find a solution
 
 ## Deployment
 
-### Heroku
-
 The project was deployed to Heroku using the following steps...
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-3. Locate the "Pages" Section in the lateral menu.
-4. Under "Source", click the dropdown called "None" and select "Main Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://deneb331.github.io/2P-JuanJoseRuizRuiz-SimonSays/) in the "GitHub Pages" section.
+### ElephantSQL
+- Register/Log in and create a new database. Choose the region that is closest to you.
+- After creating the database, save the database url, as you will need it later in Django.
+
+### Cloudinary
+- Register/Log in, and you will get a Cloudinary url that you need to save for later in Django.
+
+### Django:
+- Create the file env.py and save the DATABASE_URL and CLOUDINARY_URL we got before.
+- Execute the command 'pip3 freeze --local > requirements.txt' to save all heroku needs to install later.
+- In the settings.py, change Debug to False.
+- Create Procfile file in the root of your project, and write "web: gunicorn PROJ_NAME.wsgi"
+- In settings.py, change ALLOWED_HOSTS to this: ALLOWED_HOSTS = ["HEROKUAPPNAME.herokuapp.com", "localhost"]
+- Push all the changes to the server.
+
+### Heroku
+- Log in to Heroku and create a new app by clicking on the button in the top-right corner.
+- Use a unique name for the app and choose your region (mine was Europe) and click on Create App
+- In Settings, click on Reveal Config Vars and add the following:
+    - SECRET_KEY: Create your personal secret key.
+    - CLOUDINARY_URL: You can get it from Cloudinary website just after login in
+    - DATABASE_URL: You can get it from ElephantSQL after login in and create de database for this project.
+    - CONTACT_EMAIL: Email used in your contact form.
+    - EMAIL_PASS: App password created in your gmail account. 
+- Go to Deploy tab and connect your github account.
+- Connect your repository to Heroku.
+- Choose 'main' branch and click Deploy Branch.
 
 ## Credits
 
@@ -149,7 +222,7 @@ The project was deployed to Heroku using the following steps...
 
 ### Media
 
--   
+-   [Pixabay](https://pixabay.com/)
 
 ### Acknowledgements
 
