@@ -111,7 +111,7 @@ a:hover {
 }
 
 .first {
-    background-image: url("https://res.cloudinary.com/drefitd37/image/upload/v1680142092/static/img/first_game_img.efd4157063a8.jpg");
+    background-image: url("{% static '/img/first_game_img.jpg/' %}");
     background-size: cover;
     text-align: center;
 }
@@ -131,7 +131,7 @@ a:hover {
 }
 
 .second {
-    background-image: url("https://res.cloudinary.com/drefitd37/image/upload/v1680142093/static/img/second_game_img.c9a85d1df8b5.jpg");
+    background-image: url("{% static 'img/second_game_img.jpg' %}");
     background-size: cover;
     background-color: #00000057;
 }
