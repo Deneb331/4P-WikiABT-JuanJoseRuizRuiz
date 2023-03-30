@@ -111,7 +111,7 @@ a:hover {
 }
 
 .first {
-    background-image: url('../img/first_game_img.jpg');
+    background-image: url("{% static 'img/first_game_img.jpg' %}");;
     background-size: cover;
     text-align: center;
 }
@@ -131,7 +131,7 @@ a:hover {
 }
 
 .second {
-    background-image: url('../img/second_game_img.jpg');
+    background-image: url("{% static 'img/second_game_img.jpg' %}");
     background-size: cover;
     background-color: #00000057;
 }
