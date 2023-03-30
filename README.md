@@ -116,6 +116,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 - When try to access a post, the page can't load because it can't find the correct slug - Use get_absolute_url() method in the post model.
 - Even when the view and url seems to be right, contact page can't load - Change the order of the contact url in urls.py
 - In the contact form, it gives an error when the user try to use it to send a message - needed to create an application password in the gmail and update settings.py
+- In deployment, summernote widget doesn't show up as it does in local environment - Couldn't find a solution
 
 ## Deployment
 

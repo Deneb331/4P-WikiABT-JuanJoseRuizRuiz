@@ -10,33 +10,38 @@
                 <form class="d-inline" action="{% url 'wiki:post_detail_like' post.slug %}" method="POST">
                     {% csrf_token %}
                     {% if liked %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                            class="fas fa-heart"></i></button>
                     {% else %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                            class="far fa-heart"></i></button>
                     {% endif %}
                 </form>
                 {% else %}
                 <span class="text-secondary"><i class="far fa-heart"></i></span>
                 {% endif %}
-            <!-- The number of likes goes before the closing strong tag -->
-            <span class="text-secondary">{{ post.number_of_likes }} </span>
+                <!-- The number of likes goes before the closing strong tag -->
+                <span class="text-secondary">{{ post.number_of_likes }} </span>
             </strong>
         </div>
-        <div class="post-content">
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-9 post-content">
             <div class="post-text">
                 {{ post.content | safe }}
             </div>
-            <div class="card info-box">
-                <div class="card-body">
-                    <h3 class="card-title">{{post.title}}</h3>
-                    <img src="{{ post.featured_image.url }}" alt="{{ post.excerpt }}" class="card-img-top">
-                    <p class="card-text">{{post.infobox_content | safe}}</p>
-                </div>
+        </div>
+        <div class="col-12 col-md-3 card info-box">
+            <div class="card-body">
+                <h3 class="card-title">{{post.title}}</h3>
+                <img src="{{ post.featured_image.url }}" alt="{{ post.excerpt }}" class="card-img-top">
+                <p class="card-text">{{post.infobox_content | safe}}</p>
             </div>
         </div>
         <p class="post-subtitle">{{ post.updated_on }}</p>
     </div>
-    <div class="row">
+    <hr>
+    <div class="row post-comments">
         <div class="col-12 comment-section">
             <h3>Leave a comment:</h3>
             {% if commented %}
@@ -50,30 +55,29 @@
             <form method="post" style="margin-top: 1.3em;">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                <button type="submit" class="btn btn-comment">Submit</button>
             </form>
             {% endif %}
             {% endif %}
-
+        </div>
+        <hr>
+        <div class="col-12 comment-list">
             <h3>Comments:</h3>
-            
-            <div class="comments">
-                {% for comment in comments %}
-                <div class="comment" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ comment.body | linebreaks }}
-                </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
+            {% for comment in comments %}
+            <div class="comment" style="padding: 10px;">
+                <p class="font-weight-bold">
+                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                    {{ comment.name }}
+                    <span class=" text-muted font-weight-normal">
+                        <!-- The comment's created date goes here -->
+                        {{ comment.created_on }}
+                    </span> wrote:
+                </p>
+                <!-- The body of the comment goes before the | -->
+                {{ comment.body | linebreaks }}
             </div>
+            <!-- Our for loop ends here -->
+            {% endfor %}
         </div>
     </div>
 </div>

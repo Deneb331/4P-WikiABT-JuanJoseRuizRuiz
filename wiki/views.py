@@ -20,6 +20,9 @@ def index(request):
 
 
 def create_post(request):
+    """
+    View to create a post.
+    """
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -33,6 +36,9 @@ def create_post(request):
 
 
 def edit_post(request, post_slug):
+    """
+    View to edit a post that has been already created.
+    """
     post = get_object_or_404(Post, slug=post_slug)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
@@ -137,6 +143,9 @@ class PostDetail(generic.DetailView):
 
 
 class PostDetailLike(View):
+    """
+    View to like or unlike a post from the post detail page.
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 

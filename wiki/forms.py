@@ -20,7 +20,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'category', 'featured_image', 'image_alt', 'content', 'infobox_content', 'status')
-        widgets = {
-            'content': SummernoteWidget(),
-            'infobox_content': SummernoteWidget(),
-        }
+        # widgets = {
+        #     'content': SummernoteWidget(),
+        #     'infobox_content': SummernoteWidget(),
+        # }
