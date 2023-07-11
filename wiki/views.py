@@ -19,6 +19,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+
 @login_required
 def create_post(request):
     """
@@ -28,6 +29,7 @@ def create_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            post.author = request.user
             post.save()
             form.save_m2m()
             return HttpResponseRedirect('/')
@@ -36,11 +38,14 @@ def create_post(request):
     return render(request, 'create_post.html', {'form': form})
 
 
+@login_required
 def edit_post(request, post_slug):
     """
     View to edit a post that has been already created.
     """
     post = get_object_or_404(Post, slug=post_slug)
+    if post.author != request.user:
+        return HttpResponseRedirect('/')
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -51,11 +56,14 @@ def edit_post(request, post_slug):
     return render(request, 'edit_post.html', {'form': form})
 
 
+@login_required
 def delete_post(request, post_slug):
     """
     View to delete a post that has already been created.
     """
     post = get_object_or_404(Post, slug=post_slug)
+    if post.author != request.user:
+        return HttpResponseRedirect('/')
     postCategory = post.category.slug  # Access the 'slug' attribute of the category
     post.delete()
     return HttpResponseRedirect(reverse('wiki:post_page', args=[postCategory]))

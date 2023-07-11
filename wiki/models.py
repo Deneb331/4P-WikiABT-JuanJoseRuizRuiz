@@ -27,6 +27,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True, null=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=200, unique=True, null=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False)
     featured_image = CloudinaryField('image', default='placeholder')

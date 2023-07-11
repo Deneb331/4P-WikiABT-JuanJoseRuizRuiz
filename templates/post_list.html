@@ -11,7 +11,7 @@
           <div class="card-body">
             <a href="{{ post.get_absolute_url }}" class="card-title">{{ post.title }}</a>
             <p class="card-text">{{ post.excerpt }}</p>
-            {% if user.is_authenticated %}
+            {% if post.author == user %}
             <a class="btn-edit" href="{% url 'wiki:edit_post' post_slug=post.slug %}">Edit</a>
             <a class="btn-delete" href="{% url 'wiki:delete_post' post_slug=post.slug %}">Delete</a>
             {% endif %}
