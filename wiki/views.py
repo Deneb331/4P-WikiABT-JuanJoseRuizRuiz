@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 
@@ -48,6 +48,16 @@ def edit_post(request, post_slug):
     else:
         form = PostForm(instance=post)
     return render(request, 'edit_post.html', {'form': form})
+
+
+def delete_post(request, post_slug):
+    """
+    View to delete a post that has already been created.
+    """
+    post = get_object_or_404(Post, slug=post_slug)
+    postCategory = post.category.slug  # Access the 'slug' attribute of the category
+    post.delete()
+    return HttpResponseRedirect(reverse('wiki:post_page', args=[postCategory]))
 
 
 class CategoryList(generic.ListView):

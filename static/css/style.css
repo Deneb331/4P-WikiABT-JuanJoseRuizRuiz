@@ -231,6 +231,17 @@ a:hover {
     background-color: #02a036;
 }
 
+.btn-delete {
+    background-color: #cc0000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    color: white;
+    background-color: #a00202;
+}
+
 /* Post detail */
 
 .post-title {
