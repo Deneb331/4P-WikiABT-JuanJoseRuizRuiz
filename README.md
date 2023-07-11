@@ -20,6 +20,8 @@ This page is a wiki where a fictional game studio organise information of their 
 
     - Create/Edit Post: As a Site User I can create a new post or edit an existing one so that I can update the wiki with new info
 
+    - Delete Post: As a Post author I can delete posts so that I can have control over the content I create.
+
     - Manage Posts: As a Site Admin I can validate posts or comments made by other site users so that I can manage the wiki content
 
     - View Paginated Posts: As a Site User I can view a list of posts so that I can find and view the post I want easily
@@ -37,6 +39,8 @@ This page is a wiki where a fictional game studio organise information of their 
     - View Likes: As a Site User I can view likes on posts or comments so that I can see which posts or comments have more popularity
 
     - Authentication: As a Site User I can log in into my own account so that I can comment, write new posts or edit existing posts.
+
+    - Permissions: As a Site User my posts have access restriction so that they are protected from other users.
 
     - Contact Page: As a Site User I can fill a contact form so that I can send feedback to the site admin
 

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.core.mail import send_mail
 from .forms import ContactForm, CommentForm, PostForm
@@ -64,7 +65,7 @@ def delete_post(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
     if post.author != request.user:
         return HttpResponseRedirect('/')
-    postCategory = post.category.slug  # Access the 'slug' attribute of the category
+    postCategory = post.category.slug
     post.delete()
     return HttpResponseRedirect(reverse('wiki:post_page', args=[postCategory]))
 
@@ -103,7 +104,8 @@ class PostDetail(generic.DetailView):
 
     def get(self, request, queryset=None, *args, **kwargs):
         """
-        Override get_object function inside DetailView to get 'category-slug/post-slug url'
+        Override get_object function inside DetailView
+        to get 'category-slug/post-slug url'
         """
         category_slug = self.kwargs.get('category_slug')
         post_slug = self.kwargs.get('post_slug')
@@ -162,7 +164,7 @@ class PostDetail(generic.DetailView):
         )
 
 
-class PostDetailLike(View):
+class PostDetailLike(LoginRequiredMixin, View):
     """
     View to like or unlike a post from the post detail page.
     """
