@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from django.core.mail import send_mail
 from .forms import ContactForm, CommentForm, PostForm
@@ -18,7 +19,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-
+@login_required
 def create_post(request):
     """
     View to create a post.
