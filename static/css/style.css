@@ -219,16 +219,6 @@ a:hover {
     margin: 0 auto 20px auto;
 }
 
-.btn-edit {
-    background-color: #00cc44;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.btn-edit:hover {
-    color: white;
-    background-color: #02a036;
-}
 
 .btn-delete {
     background-color: #cc0000;
@@ -240,6 +230,19 @@ a:hover {
     color: white;
     background-color: #a00202;
 }
+
+
+.btn-edit {
+    background-color: #00cc44;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-edit:hover {
+    color: white;
+    background-color: #02a036;
+}
+
 
 /* Post detail */
 
