@@ -6,7 +6,7 @@ class CommmentFormTest(TestCase):
     def test_body_content_is_required(self):
         form = CommentForm({'body': ""})
         self.assertFalse(form.is_valid())
-        
+
 
 class ContactFormTest(TestCase):
     def test_name_is_required(self):
@@ -17,7 +17,8 @@ class ContactFormTest(TestCase):
             'message': 'test message'
         })
         self.assertFalse(form.is_valid())
-    
+
+
     def test_email_is_required(self):
         form = ContactForm({
             'name': 'test name',
@@ -26,7 +27,8 @@ class ContactFormTest(TestCase):
             'message': 'test message'
         })
         self.assertFalse(form.is_valid())
-    
+
+
     def test_subject_is_required(self):
         form = ContactForm({
             'name': 'test name',
@@ -36,6 +38,7 @@ class ContactFormTest(TestCase):
         })
         self.assertFalse(form.is_valid())
 
+
     def test_message_is_required(self):
         form = ContactForm({
             'name': 'test name',
@@ -44,7 +47,7 @@ class ContactFormTest(TestCase):
             'message': ''
         })
         self.assertFalse(form.is_valid())
-    
+
 
 class PostFormTest(TestCase):
     def test_title_is_required(self):
@@ -61,7 +64,8 @@ class PostFormTest(TestCase):
         self.assertIn('title', form.errors.keys())
         self.assertEqual(
             form.errors['title'][0], 'This field is required.')
-    
+
+
     def test_category_is_required(self):
         form = PostForm({
             'title': 'test title',
@@ -76,6 +80,7 @@ class PostFormTest(TestCase):
         self.assertIn('category', form.errors.keys())
         self.assertEqual(
             form.errors['category'][0], 'This field is required.')
+
 
     def test_content_is_required(self):
         form = PostForm({
@@ -92,6 +97,7 @@ class PostFormTest(TestCase):
         self.assertEqual(
             form.errors['content'][0], 'This field is required.')
 
+
     def test_infobox_content_is_required(self):
         form = PostForm({
             'title': 'test title',
@@ -106,6 +112,7 @@ class PostFormTest(TestCase):
         self.assertIn('infobox_content', form.errors.keys())
         self.assertEqual(
             form.errors['infobox_content'][0], 'This field is required.')
+
 
     def test_status_is_required(self):
         form = PostForm({

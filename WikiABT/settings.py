@@ -31,11 +31,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ["wiki-abt1.herokuapp.com", "localhost", "8000-deneb331-4pwikiabtjuanj-b0bpeo2w82r.ws-eu101.gitpod.io"]
+ALLOWED_HOSTS = [
+    "wiki-abt1.herokuapp.com",
+    "localhost",
+    "8000-deneb331-4pwikiabtjuanj-b0bpeo2w82r.ws-eu101.gitpod.io"
+]
 
 
 # Application definition
@@ -56,6 +60,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',
+    'crispy_bootstrap4'
 ]
 
 SITE_ID = 1

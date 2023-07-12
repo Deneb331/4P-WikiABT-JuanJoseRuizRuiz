@@ -119,16 +119,19 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
         <h2 align="center"><img src="static/img/CSSValidation.png"></h2>
 -   [JSHint](https://jshint.com/)
         <h2 align="center"><img src="static/img/JSValidation.png"></h2>
--   [PythonChecker](https://www.pythonchecker.com/)
-    - admin.py has no errors.
-    - forms.py has no errors.
-    - models.py has no errors.
-    - urls.py has no errors.
-    - views.py has no errors.
-    - settings.py has no errors.
-    - test_forms.py has no errors.
-    - test_models.py has no errors.
-    - test_views.py has no errors.
+-   [PythonChecker](https://www.pythonchecker.com/) 
+    As the console gives errors with flake8 as a python checker when I try to follow the pythonchecker.com recommendations, 
+    I will try to get the best score in python checker prioritizing legibility between the instructions of both tools.
+    - admin.py - 100%
+    - forms.py - 85%
+    - models.py - 64%
+    - urls.py - 100%
+    - views.py - Not working in PythonChecker, tried in [Snyk.io](https://snyk.io/code-checker/python/) and only returned 
+    syntax errors with HttpResponseRedirect.
+    - settings.py - 100%
+    - test_forms.py - 100%
+    - test_models.py - 82%
+    - test_views.py - 78%
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -136,7 +139,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 - Post Categories: The admin can create or delete categories from de Admin Panel.
 
-- Create/Edit Post: If the user is authenticated, he/she can create a new post by clicking in the green "Create Post" button in the navbar, or edit a post from the post list of its category.
+- Create/Edit Post: If the user is authenticated, he/she can create a new post by clicking in the green "Create Post" button in the navbar, or edit a post from the post list of its category. The access is restricted to the author of a post for editing it, and if any visitor that is not logged in try to use the create-post link, the visitor get redirected to the main page.
 
 - Manage Posts: The admin can manage the posts from the admin panel.
 
@@ -174,7 +177,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 - Even when the view and url seems to be right, contact page can't load - Change the order of the contact url in urls.py
 - In the contact form, it gives an error when the user try to use it to send a message - needed to create an application password in the gmail and update settings.py
 - In deployment, summernote widget doesn't show up as it does in local environment - Couldn't find a solution
-- Background images in index page don't load in Debug=False, even when they are uploaded in Cloudinary and did collectstatic command - Couldn't find a solution
+- Background images in index page don't load in Debug=False, even when they are uploaded in Cloudinary and did collectstatic command - Used css links in the html document to access the static images.
 
 ## Deployment
 
