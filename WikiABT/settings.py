@@ -35,11 +35,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = [
-    "wiki-abt1.herokuapp.com",
-    "localhost",
-    "8000-deneb331-4pwikiabtjuanj-b0bpeo2w82r.ws-eu101.gitpod.io"
-]
+ALLOWED_HOSTS = ["wiki-abt1.herokuapp.com", "localhost", "8000-deneb331-4pwikiabtjuanj-b0bpeo2w82r.ws-eu101.gitpod.io"]
 
 
 # Application definition
