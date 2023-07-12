@@ -5,16 +5,16 @@ from .models import Category, Post, Comment
 class TestCategoryModel(TestCase):
     def test_string_method_returns_title(self):
         category = Category.objects.create(
-            title = 'test title',
-            description = 'test description'
+            title='test title',
+            description='test description'
         )
         self.assertEqual(str(category), 'test title')
 
 
     def test_category_slug_is_equal_to_slugified_title(self):
         category = Category.objects.create(
-            title = 'test title',
-            description = 'test description'
+            title='test title',
+            description='test description'
         )
         self.assertEqual(category.slug, 'test-title')
 

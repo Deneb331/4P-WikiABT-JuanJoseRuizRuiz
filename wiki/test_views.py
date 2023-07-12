@@ -35,9 +35,9 @@ class TestView(TestCase):
 
     def test_post_list_page(self):
         category = Category.objects.create(
-            title = 'test category',
-            slug = 'test-category',
-            description = 'test description'
+            title='test category',
+            slug='test-category',
+            description='test description'
         )
         response = self.client.get(f'/{category.slug}/')
         self.assertEqual(response.status_code, 200)
@@ -45,18 +45,18 @@ class TestView(TestCase):
 
 
     def test_post_detail_page(self):
-        category = Category.objects.create(
-            title = 'test category',
-            description = 'test description'
+        category=Category.objects.create(
+            title='test category',
+            description='test description'
         )
         post = Post.objects.create(
-            title = 'test post',
-            slug = 'test-post',
-            category = category,
-            image_alt = 'test alt',
-            content = 'test content',
-            infobox_content = 'test infobox content',
-            status = 1
+            title='test post',
+            slug='test-post',
+            category=category,
+            image_alt='test alt',
+            content='test content',
+            infobox_content='test infobox content',
+            status=1
         )
         response = self.client.get(f'/{category.slug}/{post.slug}/')
         self.assertEqual(response.status_code, 200)
