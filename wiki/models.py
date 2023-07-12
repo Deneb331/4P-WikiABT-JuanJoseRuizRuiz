@@ -42,15 +42,18 @@ class Post(models.Model):
     class Meta:
         ordering = ["title"]
 
+
     def get_absolute_url(self):
         return reverse("wiki:post_detail", kwargs={
             "category_slug": self.category.slug,
             "post_slug": self.slug
             })
 
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
